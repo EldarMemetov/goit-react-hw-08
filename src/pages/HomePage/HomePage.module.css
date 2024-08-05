@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  padding: 20px;
+  border-radius: 10px;
+
+  margin-top: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  color: #ebecee;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+}
+
+.icon {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #f8f6f6;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-top: 0;
+  font-family: "Roboto", sans-serif;
+}

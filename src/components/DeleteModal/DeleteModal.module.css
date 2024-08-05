@@ -1,0 +1,60 @@
+/* DeleteModal.module.css */
+
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.deleteButton,
+.cancelButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.deleteButton {
+  background: linear-gradient(45deg, #ff4b5c, #f26a4f);
+  color: white;
+}
+
+.deleteButton:hover {
+  background: linear-gradient(45deg, #f26a4f, #ff4b5c);
+  transform: scale(1.05);
+}
+
+.cancelButton {
+  background: #ddd;
+  color: #333;
+}
+
+.cancelButton:hover {
+  background: #ccc;
+  transform: scale(1.05);
+}

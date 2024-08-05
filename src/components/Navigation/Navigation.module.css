@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.link {
+  font-size: 1rem;
+  color: #f7f3f3;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.link:hover {
+  background: #4a90e2;
+  color: #fff;
+}

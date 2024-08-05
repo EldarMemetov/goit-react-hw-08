@@ -1,60 +1,68 @@
-.containerForm {
+/* ContactForm.module.css */
+
+.form {
   display: flex;
-  margin-bottom: 20px;
   flex-direction: column;
   align-items: center;
-}
-.bigContainerForm {
-  border: 1px solid #ccc;
   padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   margin: 0 auto;
-  background: linear-gradient(to bottom, #3048d4, #0b8adf);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
 }
-.containerForm input {
+
+.fieldContainer {
   width: 100%;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.containerForm input:focus {
-  background-color: #e0e0e0;
+  margin-bottom: 15px;
 }
 
-.spanError {
-  transition: opacity 5s ease;
-  color: red;
+.label {
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
 }
-.buttonAdd {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #23c788;
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+  border-color: #2501ff;
+  box-shadow: 0 0 8px rgba(37, 1, 255, 0.2);
+  outline: none;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #2501ff, #6a1b9a);
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.buttonAdd:hover {
-  background-color: #45a049;
+.submitButton:hover {
+  background: linear-gradient(45deg, #6a1b9a, #2501ff);
+  transform: scale(1.05);
 }
 
-.buttonAdd:focus {
-  outline: none;
-}
-
-.buttonAdd:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.submitButton:active {
+  background: linear-gradient(45deg, #2501ff, #6a1b9a);
+  transform: scale(0.98);
 }

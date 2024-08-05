@@ -1,29 +1,79 @@
-import peopleContact from "./contact.module.css";
-import { HiUser } from "react-icons/hi";
-import { FaPhoneAlt } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { FaUser, FaPhoneAlt } from "react-icons/fa";
+import { deleteContacts, editContact } from "../../redux/contacts/operations";
+import {
+  openDeleteModal,
+  closeDeleteModal,
+  openEditModal,
+  closeEditModal,
+} from "../../redux/contacts/slice";
+import DeleteModal from "../DeleteModal/DeleteModal";
+import EditContactModal from "../EditContactModal/EditContactModal";
+import styles from "./Contact.module.css";
 
-const Contact = ({ name, number, id }) => {
+export default function Contact({ data: { id, name, number } }) {
   const dispatch = useDispatch();
+  const { deleteModalOpen, editModalOpen, currentContact } = useSelector(
+    (state) => state.contacts
+  );
 
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleOpenDeleteModal = () =>
+    dispatch(openDeleteModal({ id, name, number }));
+  const handleCloseDeleteModal = () => dispatch(closeDeleteModal());
+
+  const handleOpenEditModal = () =>
+    dispatch(openEditModal({ id, name, number }));
+  const handleCloseEditModal = () => dispatch(closeEditModal());
+
+  const handleDeleteContact = () => {
+    dispatch(deleteContacts(id));
+    handleCloseDeleteModal();
+  };
+
+  const handleEditContact = (values) => {
+    const updatedData = { name: values.name, number: values.phone };
+    dispatch(editContact({ contactsId: id, updatedData }));
+    handleCloseEditModal();
+  };
 
   return (
-    <li className={peopleContact.listInfo}>
-      <p className={peopleContact.containerSvg}>
-        <HiUser size={16} />
-        {name}
-      </p>
-      <p className={peopleContact.containerSvg}>
-        <FaPhoneAlt size={14} />
-        {number}
-      </p>
-      <button onClick={handleDelete} className={peopleContact.buttonDelete}>
-        Delete
-      </button>
-    </li>
+    <div className={styles.contactCard}>
+      <div className={styles.contactInfo}>
+        <p className={styles.contactName}>
+          <FaUser className={styles.icon} />
+          {name}
+        </p>
+        <p className={styles.contactNumber}>
+          <FaPhoneAlt className={styles.icon} />
+          {number}
+        </p>
+      </div>
+      <div className={styles.actions}>
+        <button className={styles.editButton} onClick={handleOpenEditModal}>
+          Edit
+        </button>
+        <button className={styles.deleteButton} onClick={handleOpenDeleteModal}>
+          Delete
+        </button>
+      </div>
+      {deleteModalOpen && currentContact.id === id && (
+        <DeleteModal
+          open={deleteModalOpen}
+          handleClose={handleCloseDeleteModal}
+          handleDelete={handleDeleteContact}
+        />
+      )}
+      {editModalOpen && currentContact.id === id && (
+        <EditContactModal
+          open={editModalOpen}
+          handleClose={handleCloseEditModal}
+          handleSave={handleEditContact}
+          initialValues={{
+            name: currentContact.name,
+            phone: currentContact.number,
+          }}
+        />
+      )}
+    </div>
   );
-};
-
-export default Contact;
+}
